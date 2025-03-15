@@ -1,19 +1,28 @@
 {
-  "name": "html2pdf.js",
+  "name": "@digivorefr/html2pdf.js",
   "version": "0.11.0",
-  "description": "Client-side HTML-to-PDF rendering using pure JS",
+  "description": "Client-side HTML-to-PDF rendering using pure JS with html2canvas-pro",
   "main": "dist/html2pdf.js",
   "files": [
     "/src",
     "/dist"
   ],
-  "repository": "git@github.com:eKoopmans/html2pdf.js.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:digivorefr/html2pdf.js.git"
+  },
   "keywords": [
     "javascript",
     "pdf-generation",
     "html",
     "client-side",
-    "canvas"
+    "canvas",
+    "oklch",
+    "html2canvas-pro",
+    "modern-colors",
+    "css-color-functions",
+    "tailwindcss",
+    "daisyui"
   ],
   "author": {
     "name": "Erik Koopmans",
@@ -22,9 +31,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/eKoopmans/html2pdf.js/issues"
+    "url": "https://github.com/digivorefr/html2pdf.js/issues"
   },
-  "homepage": "https://ekoopmans.github.io/html2pdf.js/",
+  "homepage": "https://github.com/digivorefr/html2pdf.js",
   "dependencies": {
     "es6-promise": "^4.2.5",
     "html2canvas-pro": "^1.5.8",
