@@ -1,6 +1,6 @@
 # html2pdf.js
 
-html2pdf.js converts any webpage or element into a printable PDF entirely client-side using [html2canvas](https://github.com/niklasvh/html2canvas) and [jsPDF](https://github.com/MrRio/jsPDF).
+html2pdf.js converts any webpage or element into a printable PDF entirely client-side using [html2canvas-pro](https://github.com/yorickshan/html2canvas-pro) and [jsPDF](https://github.com/MrRio/jsPDF).
 
 > :warning: There have been several issues reported in v0.10. They are being investigated but in the meantime you may wish to remain on v0.9.3 ("^0.9.3" in npm, or [use cdnjs for HTML script tags](https://cdnjs.com/libraries/html2pdf.js/0.9.3)).
 
@@ -43,7 +43,7 @@ The simplest way to use html2pdf.js is to include it as a script in your HTML by
 
 Using a CDN URL will lock you to a specific version, which should ensure stability and give you control over when to change versions. cdnjs gives you access to [all past versions of html2pdf.js](https://cdnjs.com/libraries/html2pdf.js).
 
-*Note: [Read about dependences](#dependencies) for more information about using the unbundled version `dist/html2canvas.min.js`.*
+*Note: [Read about dependences](#dependencies) for more information about using the unbundled version `dist/html2canvas-pro.min.js`.*
 
 #### Raw JS
 
@@ -169,7 +169,7 @@ The `opt` parameter has the following optional fields:
 |pagebreak   |object          |`{mode: ['css', 'legacy']}`     |Controls the pagebreak behaviour on the page. See [Page-breaks](#page-breaks) below.                        |
 |image       |object          |`{type: 'jpeg', quality: 0.95}` |The image type and quality used to generate the PDF. See [Image type and quality](#image-type-and-quality) below.|
 |enableLinks |boolean         |`true`                          |If enabled, PDF hyperlinks are automatically added ontop of all anchor tags.                                |
-|html2canvas |object          |`{ }`                           |Configuration options sent directly to `html2canvas` ([see here](https://html2canvas.hertzen.com/configuration) for usage).|
+|html2canvas |object          |`{ }`                           |Configuration options sent directly to `html2canvas-pro` ([see here](https://github.com/yorickshan/html2canvas-pro) for usage).|
 |jsPDF       |object          |`{ }`                           |Configuration options sent directly to `jsPDF` ([see here](http://rawgit.com/MrRio/jsPDF/master/docs/jsPDF.html) for usage).|
 
 ### Page-breaks
@@ -231,14 +231,14 @@ The Worker object returned by `html2pdf()` has a built-in progress-tracking mech
 
 ## Dependencies
 
-html2pdf.js depends on the external packages [html2canvas](https://github.com/niklasvh/html2canvas), [jsPDF](https://github.com/MrRio/jsPDF), and [es6-promise](https://github.com/stefanpenner/es6-promise). These dependencies are automatically loaded when using NPM or the bundled package.
+html2pdf.js depends on the external packages [html2canvas-pro](https://github.com/yorickshan/html2canvas-pro), [jsPDF](https://github.com/MrRio/jsPDF), and [es6-promise](https://github.com/stefanpenner/es6-promise). These dependencies are automatically loaded when using NPM or the bundled package.
 
-If using the unbundled `dist/html2pdf.min.js` (or its un-minified version), you must also include each dependency. Order is important, otherwise html2canvas will be overridden by jsPDF's own internal implementation:
+If using the unbundled `dist/html2pdf.min.js` (or its un-minified version), you must also include each dependency. Order is important, otherwise html2canvas-pro will be overridden by jsPDF's own internal implementation:
 
 ```html
 <script src="es6-promise.auto.min.js"></script>
 <script src="jspdf.min.js"></script>
-<script src="html2canvas.min.js"></script>
+<script src="html2canvas-pro.min.js"></script>
 <script src="html2pdf.min.js"></script>
 ```
 
@@ -246,14 +246,14 @@ If using the unbundled `dist/html2pdf.min.js` (or its un-minified version), you 
 
 ### Issues
 
-When submitting an issue, please provide reproducible code that highlights the issue, preferably by creating a fork of [this template jsFiddle](https://jsfiddle.net/u6o6ne41/) (which has html2pdf.js already loaded). Remember that html2pdf.js uses [html2canvas](https://github.com/niklasvh/html2canvas) and [jsPDF](https://github.com/MrRio/jsPDF) as dependencies, so it's a good idea to check each of those repositories' issue trackers to see if your problem has already been addressed.
+When submitting an issue, please provide reproducible code that highlights the issue, preferably by creating a fork of [this template jsFiddle](https://jsfiddle.net/u6o6ne41/) (which has html2pdf.js already loaded). Remember that html2pdf.js uses [html2canvas-pro](https://github.com/yorickshan/html2canvas-pro) and [jsPDF](https://github.com/MrRio/jsPDF) as dependencies, so it's a good idea to check each of those repositories' issue trackers to see if your problem has already been addressed.
 
 #### Known issues
 
-1. **Rendering:** The rendering engine html2canvas isn't perfect (though it's pretty good!). If html2canvas isn't rendering your content correctly, I can't fix it.
+1. **Rendering:** The rendering engine html2canvas-pro isn't perfect (though it's pretty good!). If html2canvas-pro isn't rendering your content correctly, I can't fix it.
     - You can test this with something like [this fiddle](https://jsfiddle.net/eKoopmans/z1rupL4c/), to see if there's a problem in the canvas creation itself.
 
-2. **Node cloning (CSS etc):** The way html2pdf.js clones your content before sending to html2canvas is buggy. A fix is currently being developed - try out:
+2. **Node cloning (CSS etc):** The way html2pdf.js clones your content before sending to html2canvas-pro is buggy. A fix is currently being developed - try out:
     - direct file: Go to [html2pdf.js/bugfix/clone-nodes-BUILD](/eKoopmans/html2pdf.js/tree/bugfix/clone-nodes-BUILD) and replace the files in your project with the relevant files (e.g. `dist/html2pdf.bundle.js`)
     - npm: `npm install eKoopmans/html2pdf.js#bugfix/clone-nodes-BUILD`
     - Related project: [Bugfix: Cloned nodes](https://github.com/eKoopmans/html2pdf.js/projects/9)
