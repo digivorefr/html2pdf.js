@@ -1,4 +1,21 @@
-# html2pdf.js
+# @digivorefr/html2pdf.js
+
+> **Fork of [html2pdf.js](https://github.com/eKoopmans/html2pdf.js) with enhanced CSS support via html2canvas-pro**
+
+This fork of html2pdf.js replaces the standard html2canvas library with [html2canvas-pro](https://github.com/yorickshan/html2canvas-pro) to add support for modern CSS color functions and features.
+
+## Key Enhancements
+
+- **Modern CSS Color Support**: Full support for advanced color functions:
+  - `oklch()` - Perceptually uniform color space used in modern frameworks like TailwindCSS and DaisyUI
+  - `lab()`, `lch()`, `oklab()` color functions
+  - Relative color syntax with `color()`
+- **Better image support**: Improved support for `object-fit` properties on `<img/>` elements
+- **Fixed issues**: Various rendering bugs fixed compared to standard html2canvas
+
+If you're using modern CSS frameworks like TailwindCSS or DaisyUI that leverage modern color functions, this package will correctly render them in your PDFs!
+
+## Original html2pdf.js Description
 
 html2pdf.js converts any webpage or element into a printable PDF entirely client-side using [html2canvas-pro](https://github.com/yorickshan/html2canvas-pro) and [jsPDF](https://github.com/MrRio/jsPDF).
 
@@ -6,6 +23,8 @@ html2pdf.js converts any webpage or element into a printable PDF entirely client
 
 ## Table of contents
 
+- [Key Enhancements](#key-enhancements)
+- [Original html2pdf.js Description](#original-html2pdfjs-description)
 - [Getting started](#getting-started)
   - [CDN](#cdn)
   - [Raw JS](#raw-js)
@@ -13,6 +32,7 @@ html2pdf.js converts any webpage or element into a printable PDF entirely client
   - [Bower](#bower)
   - [Console](#console)
 - [Usage](#usage)
+  - [OKLCH Color Example](#oklch-color-example)
   - [Advanced usage](#advanced-usage)
     - [Workflow](#workflow)
     - [Worker API](#worker-api)
@@ -55,7 +75,7 @@ Using a CDN URL will lock you to a specific version, which should ensure stabili
 
 #### NPM
 
-Install html2pdf.js and its dependencies using NPM with `npm install --save html2pdf.js` (make sure to include `.js` in the package name).
+Install this enhanced version and its dependencies using NPM with `npm install --save @digivorefr/html2pdf.js`.
 
 *Note: You can use NPM to create your project, but html2pdf.js **will not run in Node.js**, it must be run in a browser.*
 
@@ -88,6 +108,42 @@ Once installed, html2pdf.js is ready to use. The following command will generate
 var element = document.getElementById('element-to-print');
 html2pdf(element);
 ```
+
+### OKLCH Color Example
+
+This fork fully supports OKLCH colors in your HTML/CSS, making it perfect for modern frameworks like TailwindCSS and DaisyUI:
+
+```html
+<style>
+  .container {
+    background-color: oklch(87% 0.1 240); /* Light blue */
+    padding: 20px;
+  }
+  .heading {
+    color: oklch(55% 0.22 30); /* Deep orange */
+  }
+  .button {
+    background-color: oklch(65% 0.15 130); /* Green */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+  }
+</style>
+
+<div id="element-to-print">
+  <div class="container">
+    <h1 class="heading">Hello OKLCH Colors!</h1>
+    <p>This content will render correctly with OKLCH colors in the PDF.</p>
+    <button class="button">Download</button>
+  </div>
+</div>
+
+<script>
+  document.querySelector('.button').addEventListener('click', function() {
+    html2pdf(document.getElementById('element-to-print'));
+  });
+</script>
 
 ### Advanced usage
 
@@ -303,3 +359,14 @@ If you want to create a new feature or bugfix, please feel free to fork and subm
 [The MIT License](http://opensource.org/licenses/MIT)
 
 Copyright (c) 2017-2019 Erik Koopmans <[http://www.erik-koopmans.com/](http://www.erik-koopmans.com/)>
+
+## About this Fork
+
+This fork was created by [Digivore](https://github.com/digivorefr) to provide better support for modern CSS color functions, particularly OKLCH colors that are becoming increasingly popular in frameworks like TailwindCSS and DaisyUI.
+
+The primary enhancement is replacing html2canvas with [html2canvas-pro](https://github.com/yorickshan/html2canvas-pro), which adds support for:
+- `oklch()`, `oklab()`, `lch()`, `lab()` color functions
+- Relative color syntax
+- Improved `object-fit` for images
+
+All credit for the original html2pdf.js goes to [Erik Koopmans](https://github.com/eKoopmans).

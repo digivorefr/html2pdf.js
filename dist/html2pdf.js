@@ -1,5 +1,5 @@
 /*!
- * html2pdf.js v0.10.3
+ * @digivorefr/html2pdf.js v0.11.0
  * Copyright (c) 2025 Erik Koopmans
  * Released under the MIT License.
  */
